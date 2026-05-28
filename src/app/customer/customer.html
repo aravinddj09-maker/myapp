@@ -1,0 +1,53 @@
+<h1>Customer Management</h1>
+<div class="top-buttons">
+
+    <div>
+
+        <form #customerForm="ngForm" (ngSubmit)="addCustomer()">
+
+            <input type="text" placeholder="Customer Type" name="customerType" [(ngModel)]="customer.customerType">
+
+            <input type="text" placeholder="Full Name" name="fullName" [(ngModel)]="customer.fullName">
+
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="customer.email">
+
+            <input type="text" placeholder="Phone" name="phnNo" [(ngModel)]="customer.phnNo">
+
+            <button type="submit">Save</button>
+
+        </form>
+
+    </div>
+
+    <div class="table-wrapper">
+    <table class="customers-table">
+
+        <thead>
+            <tr>
+                <th>Customer Type</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let customer of customers">
+                <td>{{ customer.customerType }}</td>
+                <td>{{ customer.fullName }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phnNo }}</td>
+                <td>
+                    <button (click)="editCustomer(customer.id)" class="btn edit-btn">Edit</button>
+                    <button (click)="deleteCustomer(customer.id)" class="btn delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+    </div>
+
+</div>
